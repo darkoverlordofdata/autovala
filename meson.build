@@ -28,36 +28,6 @@ installfile_1 = files('data/com.rastersoft.autovala.metainfo.xml')
 install_data(installfile_1, install_dir: join_paths(get_option('prefix'),'appdata'))
 meson.add_install_script(join_paths(meson.current_source_dir(),'meson_scripts','install_data.sh'),join_paths(get_option('prefix'),get_option('datadir'),'doc'),join_paths(meson.current_source_dir(),'doc','','*'))
 
-meson.add_install_script(join_paths(meson.current_source_dir(),'meson_scripts','install_manpage.sh'),
-	'2', join_paths(get_option('mandir'),'man5'),
-	'wiki/autovala-fileformat.5.md',
-	'markdown_github',
-	'autovala-fileformat.5'
-)
-meson.add_install_script(join_paths(meson.current_source_dir(),'meson_scripts','install_manpage.sh'),
-	'2', join_paths(get_option('mandir'),'man7'),
-	'wiki/autovala-keep-changes.7.md',
-	'markdown_github',
-	'autovala-keep-changes.7'
-)
-meson.add_install_script(join_paths(meson.current_source_dir(),'meson_scripts','install_manpage.sh'),
-	'2', join_paths(get_option('mandir'),'man7'),
-	'wiki/autovala-rules.7.md',
-	'markdown_github',
-	'autovala-rules.7'
-)
-meson.add_install_script(join_paths(meson.current_source_dir(),'meson_scripts','install_manpage.sh'),
-	'2', join_paths(get_option('mandir'),'man7'),
-	'wiki/autovala-tricks.7.md',
-	'markdown_github',
-	'autovala-tricks.7'
-)
-meson.add_install_script(join_paths(meson.current_source_dir(),'meson_scripts','install_manpage.sh'),
-	'2', join_paths(get_option('mandir'),'man1'),
-	'wiki/autovala.1.md',
-	'markdown_github',
-	'autovala.1'
-)
 runoutput_2 = run_command('pkg-config',['--variable=completionsdir','bash-completion'])
 if (runoutput_2.stdout().strip() != '')
 	installfile_2 = files('data/bash_completion/autovala')
@@ -65,10 +35,10 @@ if (runoutput_2.stdout().strip() != '')
 else
 	message('Bash completion isn\'t installed. Definitions will not be built.')
 endif
-check_files_retval = run_command(join_paths(meson.current_source_dir(),'meson_scripts','check_path.sh'),'/usr/include/readline/readline.h')
+check_files_retval = run_command(join_paths(meson.current_source_dir(),'meson_scripts','check_path.sh'),'C:/msys64/mingw64/include/readline/readline.h')
 check_files_var = check_files_retval.returncode()
 if (check_files_var != 0)
-	error('The file /usr/include/readline/readline.h must exist to compile this project.')
+	error('The file C:/msys64/mingw64/include/readline/readline.h must exist to compile this project.')
 endif
 cfg_autovalaLib = configuration_data()
 cfg_autovalaLib.set('DATADIR', join_paths(get_option('prefix'),get_option('datadir')))
