@@ -86,6 +86,8 @@ endif()
 
 set (COMPILE_OPTIONS ${COMPILE_OPTIONS} --library=AutoVala --gir AutoVala-1.0.gir )
 
+include_directories (AFTER include )
+
 vala_precompile(VALA_C AutoVala
 	${APP_SOURCES}
 PACKAGES
@@ -110,7 +112,7 @@ SOVERSION
 
 install(TARGETS
 	AutoVala
-RUNTIME DESTINATION
+LIBRARY DESTINATION
 	${CMAKE_INSTALL_LIBDIR}/
 )
 install(FILES
