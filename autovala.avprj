@@ -131,6 +131,7 @@ c_library: readline
 *bash_completion: data/bash_completion/autovala
 
 source_dependency: C:/msys64/mingw64/include/readline/readline.h
+source_dependency: C:/msys64/usr/include/glob.h
 
 binary_dependency: C:/msys64/mingw64/bin/curl.exe
 

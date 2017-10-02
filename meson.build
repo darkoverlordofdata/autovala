@@ -40,6 +40,11 @@ check_files_var = check_files_retval.returncode()
 if (check_files_var != 0)
 	error('The file C:/msys64/mingw64/include/readline/readline.h must exist to compile this project.')
 endif
+check_files_retval = run_command(join_paths(meson.current_source_dir(),'meson_scripts','check_path.sh'),'C:/msys64/usr/include/glob.h')
+check_files_var = check_files_retval.returncode()
+if (check_files_var != 0)
+	error('The file C:/msys64/usr/include/glob.h must exist to compile this project.')
+endif
 cfg_autovalaLib = configuration_data()
 cfg_autovalaLib.set('DATADIR', join_paths(get_option('prefix'),get_option('datadir')))
 cfg_autovalaLib.set('PKGDATADIR', join_paths(get_option('prefix'),get_option('datadir'),'autovala'))
