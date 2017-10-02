@@ -39,14 +39,5 @@ src/autovalaLib/packages_deb.vala
 src/autovalaLib/packages_pacman.vala
 src/autovalaLib/packages_rpm.vala
 src/autovalaLib/readPkgconfig.vala
-src/autovalaPlugin/CreateNewProject.vala
-src/autovalaPlugin/PanedPercentage.vala
-src/autovalaPlugin/ProjectProperties.vala
-src/autovalaPlugin/ProjectViewerMenu.vala
-src/autovalaPlugin/actionbuttons.vala
-src/autovalaPlugin/fileview.vala
-src/autovalaPlugin/outputview.vala
-src/autovalaPlugin/projectview.vala
-src/autovalaPlugin/searchview.vala
 data/interface/binary_properties.ui
 data/interface/new_project.ui

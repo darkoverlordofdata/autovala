@@ -2,7 +2,6 @@ project('autovala',['c','vala'])
 
 add_global_arguments('-DGETTEXT_PACKAGE="autovala"',language: 'c')
 
-atk_dep = dependency('atk')
 gio_2_0_dep = dependency('gio-2.0')
 cairo_dep = dependency('cairo')
 gdk_3_0_dep = dependency('gdk-3.0')
@@ -10,12 +9,9 @@ gdk_pixbuf_2_0_dep = dependency('gdk-pixbuf-2.0')
 gee_0_8_dep = dependency('gee-0.8')
 glib_2_0_dep = dependency('glib-2.0')
 gobject_2_0_dep = dependency('gobject-2.0')
-gtk_3_0_dep = dependency('gtk+-3.0')
 libxml_2_0_dep = dependency('libxml-2.0')
 pango_dep = dependency('pango')
 pangocairo_dep = dependency('pangocairo')
-vte_2_91_dep = dependency('vte-2.91')
-x11_dep = dependency('x11')
 
 subdir('po')
 meson.add_install_script(join_paths(meson.current_source_dir(),'meson_scripts','install_data.sh'),join_paths(get_option('prefix'),'share/autovala/debian'),join_paths(meson.current_source_dir(),'data/debian',''))
@@ -167,74 +163,6 @@ pkg_mod.generate(libraries : AutoVala_library,
 install_data(join_paths(meson.current_source_dir(),'src/autovalaLib/AutoVala.deps'),install_dir: join_paths(get_option('prefix'),'share','vala','vapi'))
 meson.add_install_script(join_paths(meson.current_source_dir(),'meson_scripts','install_library.sh'),'AutoVala','AutoVala-1.0.gir')
 
-cfg_autovalaPlugin = configuration_data()
-cfg_autovalaPlugin.set('DATADIR', join_paths(get_option('prefix'),get_option('datadir')))
-cfg_autovalaPlugin.set('PKGDATADIR', join_paths(get_option('prefix'),get_option('datadir'),'autovala'))
-cfg_autovalaPlugin.set('GETTEXT_PACKAGE', 'autovala')
-cfg_autovalaPlugin.set('RELEASE_NAME', 'autovala')
-cfg_autovalaPlugin.set('PREFIX', get_option('prefix'))
-cfg_autovalaPlugin.set('VERSION', '0.99')
-cfg_autovalaPlugin.set('TESTSRCDIR', meson.current_source_dir())
-
-cfgfile_4 = configure_file(input: 'src/autovalaPlugin/Config.vala.base',output: 'Config_4.vala',configuration: cfg_autovalaPlugin)
-
-autovalaPlugin_deps = [atk_dep]
-autovalaPlugin_deps += [cairo_dep]
-autovalaPlugin_deps += [gdk_3_0_dep]
-autovalaPlugin_deps += [gdk_pixbuf_2_0_dep]
-autovalaPlugin_deps += [gee_0_8_dep]
-autovalaPlugin_deps += [gio_2_0_dep]
-autovalaPlugin_deps += [glib_2_0_dep]
-autovalaPlugin_deps += [gobject_2_0_dep]
-autovalaPlugin_deps += [gtk_3_0_dep]
-autovalaPlugin_deps += [pango_dep]
-autovalaPlugin_deps += [pangocairo_dep]
-autovalaPlugin_deps += [vte_2_91_dep]
-autovalaPlugin_deps += [x11_dep]
-autovalaPlugin_sources = [cfgfile_4]
-autovalaPlugin_sources += ['src/autovalaPlugin/CreateNewProject.vala']
-autovalaPlugin_sources += ['src/autovalaPlugin/PanedPercentage.vala']
-autovalaPlugin_sources += ['src/autovalaPlugin/ProjectProperties.vala']
-autovalaPlugin_sources += ['src/autovalaPlugin/ProjectViewerMenu.vala']
-autovalaPlugin_sources += ['src/autovalaPlugin/actionbuttons.vala']
-autovalaPlugin_sources += ['src/autovalaPlugin/fileview.vala']
-autovalaPlugin_sources += ['src/autovalaPlugin/outputview.vala']
-autovalaPlugin_sources += ['src/autovalaPlugin/projectview.vala']
-autovalaPlugin_sources += ['src/autovalaPlugin/searchview.vala']
-autovalaPlugin_sources += [extras_gresource_xml_file_c]
-autovalaPlugin_vala_args = ['--gresources='+join_paths(meson.current_source_dir(),'data/extras.gresource.xml')]
-autovalaPlugin_dependencies = [AutoVala_library]
-autovalaPlugin_vala_args += ['--gir=AutovalaPlugin-0.0.gir']
-
-
-AutovalaPlugin_library = shared_library('AutovalaPlugin',autovalaPlugin_sources,dependencies: autovalaPlugin_deps,vala_args: autovalaPlugin_vala_args,link_with: autovalaPlugin_dependencies,version: '0.99',soversion: '0',install: true)
-
-autovalaPlugin_requires = []
-autovalaPlugin_requires += ['AutoVala']
-autovalaPlugin_requires += ['atk']
-autovalaPlugin_requires += ['cairo']
-autovalaPlugin_requires += ['gdk-3.0']
-autovalaPlugin_requires += ['gdk-pixbuf-2.0']
-autovalaPlugin_requires += ['gee-0.8']
-autovalaPlugin_requires += ['gio-2.0']
-autovalaPlugin_requires += ['glib-2.0']
-autovalaPlugin_requires += ['gobject-2.0']
-autovalaPlugin_requires += ['gtk+-3.0']
-autovalaPlugin_requires += ['pango']
-autovalaPlugin_requires += ['pangocairo']
-autovalaPlugin_requires += ['vte-2.91']
-autovalaPlugin_requires += ['x11']
-pkg_mod = import('pkgconfig')
-pkg_mod.generate(libraries : AutovalaPlugin_library,
-	version : '0.99',
-	name : 'AutovalaPlugin',
-	filebase : 'AutovalaPlugin',
-	description : 'AutovalaPlugin',
-	requires : autovalaPlugin_requires)
-
-install_data(join_paths(meson.current_source_dir(),'src/autovalaPlugin/AutovalaPlugin.deps'),install_dir: join_paths(get_option('prefix'),'share','vala','vapi'))
-meson.add_install_script(join_paths(meson.current_source_dir(),'meson_scripts','install_library.sh'),'AutovalaPlugin','AutovalaPlugin-0.0.gir')
-
 cfg_autovala = configuration_data()
 cfg_autovala.set('DATADIR', join_paths(get_option('prefix'),get_option('datadir')))
 cfg_autovala.set('PKGDATADIR', join_paths(get_option('prefix'),get_option('datadir'),'autovala'))
@@ -244,12 +172,12 @@ cfg_autovala.set('PREFIX', get_option('prefix'))
 cfg_autovala.set('VERSION', '1.1.1')
 cfg_autovala.set('TESTSRCDIR', meson.current_source_dir())
 
-cfgfile_5 = configure_file(input: 'src/Config.vala.base',output: 'Config_5.vala',configuration: cfg_autovala)
+cfgfile_4 = configure_file(input: 'src/Config.vala.base',output: 'Config_4.vala',configuration: cfg_autovala)
 
 autovala_deps = [gio_2_0_dep]
 autovala_deps += [gee_0_8_dep]
 autovala_deps += [glib_2_0_dep]
-autovala_sources = [cfgfile_5]
+autovala_sources = [cfgfile_4]
 autovala_sources += ['src/autovala.vala']
 autovala_sources += [extras_gresource_xml_file_c]
 autovala_vala_args = ['--pkg','posix']

@@ -75,6 +75,34 @@ c_library: readline
 *vala_source: packages_rpm.vala
 *vala_source: readPkgconfig.vala
 
+vala_library: src/autovalaPlugin/autovalaPlugin
+*version: 0.99
+*namespace: AutovalaPlugin
+use_gresource: extras_gresource_xml
+vala_local_package: AutoVala
+vala_check_package: atk
+*vala_check_package: cairo
+*vala_check_package: gdk-3.0
+*vala_check_package: gdk-pixbuf-2.0
+*vala_check_package: gee-0.8
+*vala_check_package: gio-2.0
+*vala_check_package: glib-2.0
+*vala_check_package: gobject-2.0
+*vala_check_package: gtk+-3.0
+*vala_check_package: pango
+*vala_check_package: pangocairo
+*vala_check_package: vte-2.91
+*vala_check_package: x11
+*vala_source: CreateNewProject.vala
+*vala_source: PanedPercentage.vala
+*vala_source: ProjectProperties.vala
+*vala_source: ProjectViewerMenu.vala
+*vala_source: actionbuttons.vala
+*vala_source: fileview.vala
+*vala_source: outputview.vala
+*vala_source: projectview.vala
+*vala_source: searchview.vala
+
 
 *po: po
 
@@ -121,6 +149,15 @@ c_library: readline
 *translate: vala src/autovalaLib/packages_pacman.vala
 *translate: vala src/autovalaLib/packages_rpm.vala
 *translate: vala src/autovalaLib/readPkgconfig.vala
+*translate: vala src/autovalaPlugin/CreateNewProject.vala
+*translate: vala src/autovalaPlugin/PanedPercentage.vala
+*translate: vala src/autovalaPlugin/ProjectProperties.vala
+*translate: vala src/autovalaPlugin/ProjectViewerMenu.vala
+*translate: vala src/autovalaPlugin/actionbuttons.vala
+*translate: vala src/autovalaPlugin/fileview.vala
+*translate: vala src/autovalaPlugin/outputview.vala
+*translate: vala src/autovalaPlugin/projectview.vala
+*translate: vala src/autovalaPlugin/searchview.vala
 
 *data: data/local
 
