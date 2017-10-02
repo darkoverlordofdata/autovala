@@ -132,5 +132,5 @@ c_library: readline
 
 source_dependency: C:/msys64/mingw64/include/readline/readline.h
 
-binary_dependency: C:/msys64/mingw64/bin/curl
+binary_dependency: C:/msys64/mingw64/bin/curl.exe
 
