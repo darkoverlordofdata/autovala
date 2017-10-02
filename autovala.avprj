@@ -128,16 +128,9 @@ c_library: readline
 
 *doc: doc
 
-manpage: wiki/autovala-fileformat.5.md default 5
-manpage: wiki/autovala-keep-changes.7.md default 7
-manpage: wiki/autovala-rules.7.md default 7
-manpage: wiki/autovala-tricks.7.md default 7
-manpage: wiki/autovala.1.md
-
 *bash_completion: data/bash_completion/autovala
 
-source_dependency: /usr/include/readline/readline.h
+source_dependency: C:/msys64/mingw64/include/readline/readline.h
 
-binary_dependency: /usr/bin/pandoc
-binary_dependency: /usr/bin/curl
+binary_dependency: C:/msys64/mingw64/bin/curl
 
